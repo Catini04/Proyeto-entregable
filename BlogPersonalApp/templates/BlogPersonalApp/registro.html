@@ -1,0 +1,25 @@
+{% extends "BlogPersonalApp/padre.html" %}
+{% load static %}
+
+{% block title %}
+   
+{% endblock %}
+
+<h3>{{mensaje}}</h3>
+
+
+
+
+{% block cambio %}
+<h1>Registro</h1>
+<br>
+<form action="{% url 'Registro' %}" method="POST"> {% csrf_token %}
+    <table>
+
+        {{ form.as_table }}
+
+    </table>
+
+    <input type="submit" value="Confirmar Registro">
+
+{% endblock %} 

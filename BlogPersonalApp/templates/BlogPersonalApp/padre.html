@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="widthodevice-width, shrink-to-fit=no" />
+    
+    <link rel="stylesheet" href="{% static 'BlogPersonalApp/css/styles.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        
+        <div class="navbar">
+            <img src="../../static/BlogPersonalApp/images/python3.png" class="logo" alt="Main logo">
+            
+
+        
+        <ul>
+            <li><a  href="{% url 'inicio' %} "> Inicio</a></li>
+            <li><a href="{% url 'blog' %}"> Blog </a></li>
+            <li><a href="{% url 'aboutme' %}"> Sobre mi</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'perfil' %}"> Perfil </a></li>
+            <li><a href="{% url 'mensajes' %}"> Mensajes </a></li>
+            <li><a class="btn btn-danger"  href="{% url 'logout' %}"> Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'Registro' %}"> Registrarse</a></li>
+            <li><a href="{% url 'Login' %}"> Login</a></li>
+            {% endif %}
+            
+
+
+        </ul>
+        
+        </div>
+        
+{% block title %}
+   
+{% endblock %}
+{% block cambio %}
+    
+
+{% endblock %} 
+    
+    <h2>{{mensaje}}</h2>
+    </div>
+
+
+
+
+
+</body>
+</html>
