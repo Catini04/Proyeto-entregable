@@ -19,6 +19,7 @@ def inicio(request):
 #--------------PERFIL-------------
 @login_required
 def perfil(request):
+    
     return render(request, 'BlogPersonalApp/perfil.html')
 
 @login_required
@@ -43,13 +44,53 @@ def editarPerfil(request):
 
 
 
+"""def obtenerAvatar(request):
+    lista= Avatar.objects.filter(user=request.user)
+    if len(lista) != 0:
+        avatar= lista[0].imagen.url
+    else:
+        avatar= '/media/avatars/defectoavatar.jpg'
+    return avatar"""
+ 
+
 
 
 
 
 @login_required
 def blog(request):
-    return render(request, 'BlogPersonalApp/blog.html')
+    posts= Post.objects.filter()
+    return render(request, 'BlogPersonalApp/blog.html', {'posts': posts})
+
+@login_required
+def leerPost(request, subtitulo):
+    post =  Post.objects.get(subtitulo= subtitulo)
+    return render(request, 'BlogPersonalApp/leerPost.html', {'post': post})
+
+@login_required
+def crearPost(request):
+    if request.method == 'POST':
+        form = CrearPostForm(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            post = Post ( 
+            titulo = info['titulo'],
+            subtitulo = info['subtitulo'],
+            descripcion = info['descripcion'],
+            contenido = info['contenido'],
+            autor= info['autor'],
+            
+            img= info['img'],
+            )
+            post.save()
+            return render(request, 'BlogPersonalApp/inicio.html')
+        else: 
+            return render(request, 'BlogPersonalApp/crearPost.html', {'form': form})
+    else: 
+        form = CrearPostForm()
+        return render(request, 'BlogPersonalApp/crearPost.html', {'form': form})
+
+
 
 
 def aboutme(request):
@@ -98,6 +139,12 @@ def loginview(request):
     else: 
         form= AuthenticationForm()
         return render(request, 'BlogPersonalApp/login.html',{'form': form})
+
+
+
+
+#-----------------------------CRUD DEL BLOG-----------------------------------
+
 
 
     

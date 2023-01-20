@@ -9,10 +9,13 @@ urlpatterns = [
 
 
     path('profile/', perfil, name= "perfil"),
-    path('editarPerfil/', editarPerfil, name="EditarPerfil"),
+    path('editarPerfil', editarPerfil, name="EditarPerfil"),
 
-
+    
     path('blog/', blog, name= "blog"),
+    path('crearPost/', crearPost, name= "crearPost"),
+    
+    
 
 
     path('aboutme/', aboutme, name= "aboutme"),
@@ -23,6 +26,8 @@ urlpatterns = [
     path('registro/', registro, name= "Registro"),
     path('login/', loginview, name= "Login"),
     path('logout/', LogoutView.as_view(), name= "logout"),
+    path('<subtitulo>/', leerPost, name= "leerPost"),
+
     
 
 

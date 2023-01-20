@@ -18,6 +18,10 @@
 
     {% block cambio %}
         <h1>Perfil</h1>
+
+
+        <img src="{{ avatar }}" alt="">
+        <h2> {{ mensaje }}</h2>
         <br>
         <br>
         <a href="{% url 'EditarPerfil' %}">Editar Perfil</a>

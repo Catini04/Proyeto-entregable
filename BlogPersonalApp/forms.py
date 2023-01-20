@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 class RegistrarUsuarioForm(UserCreationForm):
     username = forms.CharField(label="Username", max_length=50)
@@ -32,3 +33,11 @@ class EditarPerfilForm(UserCreationForm):
         model= User
         fields =  ["first_name", "last_name","email", "password1", "password2" ]
         help_texts = {k:"" for k in fields}
+
+
+
+
+
+
+
+

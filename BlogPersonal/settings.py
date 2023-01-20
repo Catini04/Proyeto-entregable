@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BlogPersonalApp',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+CKEDITOR_CONFIGS = {
+        'default': {
+            'toolbar': 'full',
+    },
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -125,3 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL= '/login'
+MEDIA_URL = '/media/'
+MEDIA_ROOT= BASE_DIR / 'media'

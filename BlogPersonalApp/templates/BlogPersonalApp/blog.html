@@ -18,6 +18,34 @@
 
     {% block cambio %}
         <h1>Blog</h1>
+        <br>
+        <br>
+        <h3><a href="{% url 'crearPost' %}">Crear Post</a></h3>
+        <br>
+
+        {% if posts %}
+        {% for post in posts %}
+            <div>
+                <a href="{% url 'leerPost' post.subtitulo %}">
+                    <h2>
+                        {{ post.titulo}}
+                    </h2>
+                </a>
+                    <h3>
+                        {{post.subtitulo}}
+                    </h3>
+                
+                <p>
+                    Publicado por <strong>{{ post.autor }}</strong> 
+                </p>
+                <p> {{post.fecha}} </p>
+            </div>
+            <hr>
+        {% endfor %}
+        {% else %}
+        <h1> No existen posts aún</h1>
+
+        {% endif %}
 
     {% endblock %}
     
