@@ -1,0 +1,26 @@
+{% extends "BlogPersonalApp/padre.html" %}
+
+
+{% load static %}
+
+{% block cambio %}
+<form action="" method="POST"> {% csrf_token %}
+
+
+    <table>
+
+        {{form.as_table}}
+
+
+
+    </table>
+
+
+    <input type="submit" value="Subir post">
+
+
+
+
+</form>
+
+{% endblock cambio %}

@@ -1,0 +1,32 @@
+{% extends "BlogPersonalApp/padre.html" %}
+
+
+{% load static %}
+
+
+{% block title %}
+<h1>{{ post.titulo}}</h1>
+<br>
+<h3>{{post.descripcion}}</h3>
+<br>
+<p>Autor: {{post.autor}}</p>
+<br>
+<p>Fecha: {{post.fecha}}</p>
+<br>
+{% endblock title %}
+
+
+{% block cambio %}
+
+{{ post.contenido | safe}}
+<br>
+
+
+{% endblock cambio %} 
+
+
+{%block imagen %}
+
+<img src="{{post.img}}" alt="">
+
+{% endblock imagen %}
