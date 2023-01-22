@@ -24,7 +24,7 @@
             <li><a href="{% url 'aboutme' %}"> Sobre mi</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'perfil' %}"> Perfil </a></li>
-            <li><a href="{% url 'mensajes' %}"> Mensajes </a></li>
+            <li><a href="{% url 'Mensajeria:mensajes' %}"> Mensajes </a></li>
             <li><a class="btn btn-danger"  href="{% url 'logout' %}"> Logout</a></li>
             {% else %}
             <li><a href="{% url 'Registro' %}"> Registrarse</a></li>

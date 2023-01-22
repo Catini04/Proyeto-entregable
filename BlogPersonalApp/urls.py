@@ -21,7 +21,7 @@ urlpatterns = [
     path('aboutme/', aboutme, name= "aboutme"),
     
 
-    path('messages/', mensajes, name= "mensajes"),
+    #path('messages/', mensajes, name= "mensajes"),
 
     path('registro/', registro, name= "Registro"),
     path('login/', loginview, name= "Login"),

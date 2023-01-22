@@ -19,7 +19,6 @@ def inicio(request):
 #-------------------------PERFIL-------------------------------
 @login_required
 def perfil(request):
-    perfil = 
     
     return render(request, 'BlogPersonalApp/perfil.html')
 
@@ -55,7 +54,7 @@ def editarPerfil(request):
  
 
 
-
+#-----------------------------CRUD DEL BLOG-----------------------------------
 
 #-----------------------------BLOG Y POSTEOS ---------------------------------
 @login_required
@@ -91,6 +90,7 @@ def crearPost(request):
         form = CrearPostForm()
         return render(request, 'BlogPersonalApp/crearPost.html', {'form': form})
 
+@login_required
 
 def eliminarPost(request, id):
     post= Post.objects.get(id=id)
@@ -98,6 +98,8 @@ def eliminarPost(request, id):
     posts = Post.objects.all()
     return render(request, 'BlogPersonalApp/blog.html', {'posts': posts})
 
+
+@login_required
 def editarPost(request, id):
     post = Post.objects.get(id=id)
     if request.method == 'POST': 
@@ -137,9 +139,9 @@ def aboutme(request):
 
 
 
-@login_required
+"""@login_required
 def mensajes(request):
-    return render (request, 'BlogPersonalApp/mensajes.html')
+    return render (request, 'BlogPersonalApp/mensajes.html')"""
 
 
 
@@ -182,7 +184,7 @@ def loginview(request):
 
 
 
-#-----------------------------CRUD DEL BLOG-----------------------------------
+
 
 
 
