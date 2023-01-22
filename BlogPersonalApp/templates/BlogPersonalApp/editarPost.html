@@ -1,0 +1,17 @@
+{% extends "BlogPersonalApp/padre.html" %}
+{% load static %}
+
+{% block title %}
+<h1> Editar Post: {{ post.titulo }}</h1>
+{% endblock %}
+
+{% block cambio  %}
+<form action="{% url 'editarPost' post.id %}" method="POST"> {% csrf_token %}
+    <table>
+
+        {{ form.as_table }}
+
+    </table>
+
+    <input type="submit" value="Guardar cambios">
+{% endblock %}

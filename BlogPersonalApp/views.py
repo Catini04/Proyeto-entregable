@@ -16,9 +16,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def inicio(request):
     return render(request, 'BlogPersonalApp/inicio.html')
 
-#--------------PERFIL-------------
+#-------------------------PERFIL-------------------------------
 @login_required
 def perfil(request):
+    perfil = 
     
     return render(request, 'BlogPersonalApp/perfil.html')
 
@@ -56,15 +57,15 @@ def editarPerfil(request):
 
 
 
-
+#-----------------------------BLOG Y POSTEOS ---------------------------------
 @login_required
 def blog(request):
     posts= Post.objects.filter()
     return render(request, 'BlogPersonalApp/blog.html', {'posts': posts})
 
 @login_required
-def leerPost(request, subtitulo):
-    post =  Post.objects.get(subtitulo= subtitulo)
+def leerPost(request, id):
+    post =  Post.objects.get(id= id)
     return render(request, 'BlogPersonalApp/leerPost.html', {'post': post})
 
 @login_required
@@ -89,6 +90,44 @@ def crearPost(request):
     else: 
         form = CrearPostForm()
         return render(request, 'BlogPersonalApp/crearPost.html', {'form': form})
+
+
+def eliminarPost(request, id):
+    post= Post.objects.get(id=id)
+    post.delete()
+    posts = Post.objects.all()
+    return render(request, 'BlogPersonalApp/blog.html', {'posts': posts})
+
+def editarPost(request, id):
+    post = Post.objects.get(id=id)
+    if request.method == 'POST': 
+        form = CrearPostForm(request.POST)
+        if form.is_valid():
+            info= form.cleaned_data
+            post.titulo= info["titulo"]
+            post.subtitulo= info["subtitulo"]
+            post.descripcion= info["descripcion"]
+            post.contenido= info["contenido"]
+            post.img= info["img"]
+            post.save()
+            posts= Post.objects.all()
+            return render(request, 'BlogPersonalApp/blog.html', {'posts': posts})
+        pass
+
+
+    else:
+        form= CrearPostForm(initial=
+        {"titulo": post.titulo,
+         "subtitulo": post.subtitulo,
+         'descripcion': post.descripcion,
+         'contenido': post.contenido,
+         'autor': post.autor,
+         'img': post.img
+        })
+        return render(request, 'BlogPersonalApp/editarPost.html', {'form': form, 'post': post})
+        
+
+
 
 
 

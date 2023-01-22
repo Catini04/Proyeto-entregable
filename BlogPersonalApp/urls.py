@@ -26,7 +26,9 @@ urlpatterns = [
     path('registro/', registro, name= "Registro"),
     path('login/', loginview, name= "Login"),
     path('logout/', LogoutView.as_view(), name= "logout"),
-    path('<subtitulo>/', leerPost, name= "leerPost"),
+    path('<id>/', leerPost, name= "leerPost"),
+    path('eliminarPost/<id>/', eliminarPost, name="eliminarPost"),
+    path('editarPost/<id>/', editarPost, name="editarPost"),
 
     
 
